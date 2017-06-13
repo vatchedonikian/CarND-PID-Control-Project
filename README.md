@@ -88,3 +88,7 @@ that's just a guess.
 
 One last note here: regardless of the IDE used, every submitted project must
 still be compilable with cmake and make./
+
+## Project Writeup
+
+For the PID controller, I used the manual tuning method to find the best gains for the system. I started at Kp=1, Ki=1, and Kd=1 and then adjusted each individually until I was able to get results I liked. The integral gain, if too high, made the system go unstable, steering way off the road. I made it small, final value of 0.001. The proportional gain was very useful. If the gain was too big, the car was oscillating trying to correct itself too drastically. If it was too small, I was running off the road too easily. From my tuning method I arrived at Kp=0.09 as my optimal. For the derivative gain, it was tricky. In a general case, the derivative gain helps to reduce oscillations and damp the response. This was indeed true here, but if there was too much derivative gain, then the car was trying to correct itself too much. If the derivative gain was too small, the proportional control would be too dominant and there was too much steering. I arrived at a final derivative gain of 2.0.
